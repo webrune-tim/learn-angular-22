@@ -1,0 +1,271 @@
+@layer reset, typography, base, components, utilities;
+
+/* 1. Register variables so the browser knows they are interpolatable <color> values */
+@property --accent-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f4e101;
+}
+
+@property --surface-1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #151515;
+}
+
+@property --text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #eeeeee;
+}
+
+@property --fz-cn-5 {
+  syntax: "<length>";
+  initial-value: 2.7994rem;
+  inherits: true;
+}
+
+/* 2. Base Dark Theme (Default) */
+:root {
+  color-scheme: dark;
+
+  --charcoal: #151515;
+  --dark-grey: #252525;
+  --dark-gray: var(--dark-grey);
+  --light-grey: #eeeeee;
+  --light-gray: var(--light-grey);
+  --white: #ffffff;
+  --yellow: #f4e101;
+  --blue: #022d35;
+
+  --transition-speed: 0.2s;
+
+  /* Default Dark Mode Values */
+  --accent-color: var(--yellow);
+  --surface-1: var(--charcoal);
+  --surface-2: var(--dark-grey);
+  --text: var(--light-grey);
+
+  /* CRITICAL: The registered custom properties must transition directly on :root */
+  transition:
+    --accent-color var(--transition-speed) ease,
+    --surface-1 var(--transition-speed) ease,
+    --text var(--transition-speed) ease;
+
+  --bg-gritty-dark: url('https://images.pexels.com/photos/14918674/pexels-photo-14918674.jpeg');
+  --bg-gritty-light: url('https://images.pexels.com/photos/6485507/pexels-photo-6485507.jpeg');
+  --bg-gritty: var(--bg-gritty-dark);
+
+  /* Space Sizing */
+  --space-xs: clamp(0.875rem, 0.8494rem + 0.1136vw, 0.9375rem);
+  --space-s: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem);
+  --space-l: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem);
+  --space-xl: clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem);
+}
+
+/* 3. Light Mode Override */
+:root[data-theme="light"],
+:root.light {
+  color-scheme: light;
+  --accent-color: var(--blue);
+  --surface-1: var(--light-grey);
+  --surface-2: var(--white);
+  --text: var(--charcoal);
+  --bg-gritty: var(--bg-gritty-light);
+}
+
+@layer reset {
+  *, *:before, *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+@layer typography {
+  :root {
+    /* Font Sizes */
+    --fz--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
+    --fz--1: clamp(0.9375rem, 0.9119rem + 0.1136vw, 1rem);
+    --fz-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+    --fz-1: clamp(1.35rem, 1.2631rem + 0.3864vw, 1.5625rem);
+    --fz-2: clamp(1.62rem, 1.4837rem + 0.6057vw, 1.9531rem);
+    --fz-3: clamp(1.944rem, 1.7405rem + 0.9044vw, 2.4414rem);
+    --fz-4: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
+    --fz-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
+    --fz-banner: clamp(1.5rem, 1.25rem + 6.5vw, 8.5rem);
+
+    /* Container */
+    --fz-cn--2: clamp(0.7813rem, 0.7736rem + 0.0341cqi, 0.8rem);
+    --fz-cn--1: clamp(0.9375rem, 0.9119rem + 0.1136cqi, 1rem);
+    --fz-cn-0: clamp(1.125rem, 1.0739rem + 0.2273cqi, 1.25rem);
+    --fz-cn-1: clamp(1.35rem, 1.2631rem + 0.3864cqi, 1.5625rem);
+    --fz-cn-2: clamp(1.62rem, 1.4837rem + 0.6057cqi, 1.9531rem);
+    --fz-cn-3: clamp(1.944rem, 1.7405rem + 0.9044cqi, 2.4414rem);
+    --fz-cn-4: clamp(2.3328rem, 2.0387rem + 1.3072cqi, 3.0518rem);
+    --fz-cn-5: clamp(2.7994rem, 2.384rem + 1.8461cqi, 3.8147rem);
+
+    --font-banner: "Rammetto One", sans-serif;
+    --font-sans: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-banner);
+  }
+
+  h1 {
+    font-size: var(--fz-5);
+    padding-top: var(--space-m);
+    padding-bottom: var(--space-l);
+  }
+  h2 {
+    font-size: var(--fz-4);
+    padding-top: var(--space-s);
+    padding-bottom: var(--space-m);
+  }
+  h3 {
+    font-size: var(--fz-3);
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-s);
+  }
+  h4 {
+    font-size: var(--fz-2);
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-s);
+  }
+  h5 {
+    font-size: var(--fz-1);
+    padding-top: var(--space-xs);
+    padding-bottom: var(--space-s);
+  }
+  p {
+    font-size: var(--fz-1);
+    padding-top: var(--space-s);
+    padding-bottom: var(--space-s);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans) !important;
+  }
+
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+
+  .gridy-text {
+    background: var(--bg-gritty);
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: none;
+  }
+}
+
+@layer base {
+  body {
+    max-width: 1000px;
+    margin: 0 auto;
+    
+    background-color: var(--surface-1);
+    color: var(--text);
+    font-family: var(--font-sans);
+    border-left: var(--space-m) solid var(--accent-color);
+    border-right: var(--space-m) solid var(--accent-color);
+
+    /* Also transition properties directly on body for full compatibility */
+    transition:
+      background-color var(--transition-speed) ease,
+      color var(--transition-speed) ease,
+      border-color var(--transition-speed) ease;
+
+    @media(max-width: 800px) {
+      border-left: var(--space-s) solid var(--accent-color);
+      border-right: var(--space-s) solid var(--accent-color);
+    }
+  }
+
+  main {
+    min-height: 100dvh;
+    margin: 0 auto;
+    padding: 0 var(--space-m);
+
+    @media(max-width: 800px) {
+      padding: 0 var(--space-s);
+    }
+  }
+
+  header,
+  footer {
+    display: grid;
+    place-items: center;
+    border-top: var(--space-m) solid var(--accent-color);
+    border-bottom: var(--space-m) solid var(--accent-color);
+    transition: border-color var(--transition-speed) ease;
+  }
+
+  header {
+    position: relative;
+    height: 40dvw;
+
+    @media(max-width: 800px) {
+      border-top: var(--space-s) solid var(--accent-color);
+      border-bottom: var(--space-s) solid var(--accent-color);
+    }
+
+    span {
+      font-size: var(--fz-banner);
+      font-family: var(--font-banner);
+    }
+  }
+
+  footer {
+    display: flex;
+    place-content: center;
+    gap: var(--space-xs);
+    height: clamp(150px, 20dvw, 300px);
+
+    span {
+      font-size: var(--fz-1);
+      font-family: var(--font-banner);
+    }
+  }
+}
+
+@layer components {
+  button {
+    background: rgb(from var(--accent-color) r g b / 0.9);
+    background: var(--bg-gritty);
+    background-size: cover;
+    color: contrast-color(var(--accent-color));
+    padding: var(--space-xs);
+    border: none;
+
+    &.square {
+      aspect-ratio: 1 / 1;
+    }
+
+    &.theme-switcher {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 0 0 0 var(--space-s);
+    }
+  }
+}
+
+@layer utilities {
+  .center-text { text-align: center; }
+
+  .inline-container {
+    container: wrapper / inline;
+
+    & > * {
+      --fz-cn-5: clamp(2.7994rem, 2.384rem + 1.8461cqi, 3.8147rem);
+    }
+  }
+
+  .inlign-card-container { container: card / inline-size }
+}
