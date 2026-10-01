@@ -1,4 +1,4 @@
-@layer reset, typography, base, components, utilities;
+
 
 /* 1. Register variables so the browser knows they are interpolatable <color> values */
 @property --accent-color {
@@ -24,6 +24,8 @@
   initial-value: 2.7994rem;
   inherits: true;
 }
+
+@layer reset, typography, base, components, utilities;
 
 /* 2. Base Dark Theme (Default) */
 :root {
