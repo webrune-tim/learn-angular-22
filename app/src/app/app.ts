@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ThemeSwitcher } from './components/theme-switcher/theme-switcher.component';
 
 @Component({
   imports: [RouterOutlet],

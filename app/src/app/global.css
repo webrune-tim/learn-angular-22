@@ -231,25 +231,7 @@
 }
 
 @layer components {
-  button {
-    background: rgb(from var(--accent-color) r g b / 0.9);
-    background: var(--bg-gritty);
-    background-size: cover;
-    color: contrast-color(var(--accent-color));
-    padding: var(--space-xs);
-    border: none;
-
-    &.square {
-      aspect-ratio: 1 / 1;
-    }
-
-    &.theme-switcher {
-      position: absolute;
-      top: 0;
-      right: 0;
-      border-radius: 0 0 0 var(--space-s);
-    }
-  }
+  
 }
 
 @layer utilities {
