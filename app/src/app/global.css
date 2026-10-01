@@ -19,12 +19,6 @@
   initial-value: #eeeeee;
 }
 
-@property --fz-cn-5 {
-  syntax: "<length>";
-  initial-value: 2.7994rem;
-  inherits: true;
-}
-
 @layer reset, typography, base, components, utilities;
 
 /* 2. Base Dark Theme (Default) */
